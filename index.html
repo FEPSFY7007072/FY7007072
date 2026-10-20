@@ -1,11 +1,28 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>
-      Hello 
-    </title>
-    
+    <title>Change Button Color</title
+    <title>My Daily Activities </title>     
+    <script type>="text/javascript" src=https://www.gstatic.com/charts/loader.js></script>
   </head>
   <body>
-    <h1>Hi Again</h1>
+    <button id="colourButton">Click me to chnage colour</button>
+
+    <script>
+      //Get a reference to the button element
+      var button=document.getElementByld("colorButton");
+
+      //Function to change the button color
+      function chnageColor(){
+        //Generate a random color (hexadecimal)
+        var randomColor = "#" + Math.floor(Math.random()*16777215.toString(16);
+
+        //Set the button's background colour to the random color
+        button.style.backgroundColour=randomColor;
+      }
+
+      //Add a click even listener to the button
+      button.addEventListener("click" , changeColor);    
+    </script>
   </body>
 </html>
