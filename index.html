@@ -111,5 +111,150 @@ Table 1: Data on cost and lifespan of bridge repairs
     
   </pre>
 </p>
+
+<button id= "colorButton">Click me to change colour</button>button>
+<script>
+  (function () {
+    //get a reference to the button element
+    var button = document.getElementById("colorButton");
+
+    //Function to change the button color
+    function changeColor() {
+      // Generate a random color (hexadecimal)
+      var random = "#" + Math.Floor(Math.random()*16777215).toString(16);
+
+      //set button background to random color
+      button.style.backgroundColor = randomColor;
+    }
+
+    //add a click event listener to the button
+    button.addEventListener("click", changeColor);
+  })();
+</script>
+
+<input type="text" id="textInput" placeholder="Enter text">
+<button id="alertButton">Show Alert</button>button>
+
+<script>
+  (function () {
+    //get reference to the input field and button
+    var input = document.getElementById("textInput");
+    var button = document.getElemenById("alertButton");
+
+    //function to show an alert with the input text
+    function showAlert() {
+      var inputText = input.value;
+      alert("You entered: " + inputText);
+    }
+
+    //add a click event listener to the button
+    button.addEventListener("click", showAlert);
+  })();
+</script>
+
+<button id="generateButton">Generate Random Number</button>
+<p id="randomNumber"></p>
+
+<script>
+  (function () {
+    //get a reference to the button and paragraph
+    var button = document.getElementById("generateButton");
+    var paragraph = document.getElementById("randomNumber");
+
+    //function to generate and display a random number
+    function generate random number() {
+      var randomNumber = Math.floor(Math.random() * 10) +1;
+      paragraph.textContent = "Random Number: " + randomNumber;
+    }
+
+    //add a click event listener to the button
+    button.addEventListener("click" , generateRandomNumber);
+  })();
+</script>
+
+<hr>
+
+<div id="chart_div"></div>
+<div id="scatter_div"></div>
+<div id="bar_div" style="width: 600px; height: 400px;"></div>
+<div id="line_div" style="width: 1000px; height:600px;"></div>
+<div id="column_div" style="width: 600px; height: 400px;"></div>
+
+ <script type = "text/javacript">
+   google.charts.load('current', {'packages' : ['corechart'] });
+   google.charts.setOnLoadCallback(drawChart);
+   google.charts.setOnLoadCallback(drawScatterChart);
+   google.charts.setOnLoadCallback(drawBarChart);
+   google.charts.setOnLoadCallBack(drawLineChart);
+   google.charts.setOnLoadCallBack(drawColumnChart);
+
+   function drawChart() {
+   var data = google.visualization.arrayToDataTable([
+   ['Task' , 'Hour per Day'
+   ['Work' , 8],
+   ['Sleep' , 8],
+   ['Eat' , 2],
+   ['Study' , 4],
+   ['Excercise' , 2],
+   ]);
+
+   var options = {
+   title: 'My Daily Activities'
+   };
+
+   var chart= new google.visualization.PieChart(document.getElementById('chart_div'));
+   chart.draw(data, options);
+   }
+
+   function drawScatterChart() {
+   var fata = new google.visualization>DataTable();
+   data.addColumn('number', 'Age');
+   data.addColumn('number' , 'Salary');
+
+   data.addRows([
+   [25, 40000],
+   [30,50000],
+   [35, 60000],
+   [40, 750000],
+   [50, 90000]
+   ]);
+
+   var options = {
+   title: 'Age vs. Salary',
+   hAxis: { title: 'Age' }, 
+   vAxis: {title:'Salary' }
+   };
+
+   var chart = new google.visualization.ScatterChart(document.getElementById('scatter_div'));
+   chart.draw(data, options);
+   }
+
+   function drawBarChart() {
+
+   var data = new google.visualization.DataTable();
+   data.addColumn('string', 'City');
+   data,addColumn('number', 'Population');
+
+   data.addRows([
+   ['London', 9648000],
+   ['Birmingham' , 1153900],
+   ['Edinburgh', 554000]
+   ]);
+
+   var options = {
+   title: 'City Populations (Bar Chart)',
+   hAxis: { title:'Population' },
+   vAxis: {title: 'City' },
+   bars: 'vertical',
+   colors: ['#3366cc'],
+   legend: 'none'
+   };
+
+   var chart = new google.visualization.BarChart(document.getElementById('bar_div'));
+   chart.draw(data, options);
+   }
+
+   
+   
 </body>
 </html>
