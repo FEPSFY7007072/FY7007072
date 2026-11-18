@@ -253,7 +253,161 @@
 
         var chart = new google.visualization.BarChart(document.getElementById('bar_div'));
         chart.draw(data, options);
+    
       }
+
+      function drawLineChart() {
+
+        var data = newgoogle.visualization.DataTable();
+        data.addColumn('number', 'Year');
+        data.addColumn('number', 'London');
+        data.addColumn('number', 'Birmingham');
+        data.addColumn('number', Edinburgh');
+
+        data.addRows([
+          [2013, 8414000, 1092200, 495000],
+          [2015, 8661000, 1113000, 507000],
+          [2017, 8916000, 11371000, 519000],
+          [2019, 9177000, 1141800, 531000],
+          [2021, 9426000, 1142500, 543000],
+          [2023, 9648000, 1153900, 554000]
+          ]);
+
+        // set chart options
+        var options = {
+          title: 'City Population Trends (2013-2023)',
+          hAxis: {title: 'Year' },
+          vAxis {title: 'Population' },
+        colors: ['#3366cc', '#dc3912', '#ff9900'},
+      curveType: 'function',
+        legend: { position: 'bottom' }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line_div'));
+      chart.draw(data,options);
+      }
+
+      function drawColumnChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'month');
+        data.addColumn('number', 'Sales (in GBP)');
+        data.addColumn({ type: 'string' , role: 'style' });
+
+  
+
+        data.addRows([
+          ['January', 25000, 'color: #3366cc']
+          ['Febuary' , 28000, 'color: #dc3912'],
+          ['March' , 32000, , 'color #ff9900'],
+          ['April' , 27000, 'color: #109618'],
+          ['May', 31000, 'color: #990099'],
+          ['June', 34000, 'color: #0099c6'],
+          ['August', 36000, 'color: #66aa00'],
+          ['September', 31000, 'color: #b82e2e'],
+          ['October', 29000, 'color: #316395'],
+          ['November', 27000, 'color: #994499'],
+          ['December', 32000, 'color: #22aa99']
+          ]);
+
+        var options = {
+          title: 'Monthly Sales in 2023',
+          hAxis: { title: 'Month' },
+          vAxis: {title: 'Sales (in GBP)' },
+          legend: 'none', 
+          animation: {
+            startup: true,
+            duration: 1000,
+            easing: 'out'
+
+          }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('column_div'));
+        chart.draw(data,options);
+      }
+    </script>
+    <hr>
+
+
+
+    <div id="last-updated">Loading last update time...</div>
+
+    <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
+      Verify Last Modified
+    </button>
+
+    <script>
+      async function getLastUpdatedTime() {
+        const username = 'FEPSFY7007072';
+        const repo = 'FY7007072';
+
+        const url = 'https://api.github.com/repos/${username}/${repo}/commits';
+
+        try {
+          const response = await fetch(url, {
+            method: 'GET'
+              headers: {
+            'Accept': 'application/vnd.github.v3+json',
+              }
+        });
+
+        if (!response,ok) {
+          throw new Error('Error fetching data: ${response.status} - ${response.statusText}');
+        }
+
+        const commits = await response.json();
+        if (commits && commits.lenght > 0) {
+          const lastCommitDate = new Date(commits[0].commit.comitter.date);
+
+
+          document.getElementById('last-updated').innerText = 'Last Modified Time: ${lastCommitDate.toLocaleString()}';
+        } else {
+          document.getElementById('last-updated').innerText = 'No commits found in the respository.';
+        }
+      }catch (error) {
+        console.error('Error fetching the last updated time:' , error);
+      document.getElementById('last-updated').innerText ='Error fetching update time. PLease check the repository details.';
+      }
+      }
+
+      async function verifyLastUpdatedTime() {
+        document.getElementById('last-updated').innterText = 'Verifying...';
+        await getLastUpdatedTime();
+        alert("Last modified time has been successfully verified fromGitHUb API.");
+      }
+
+      window.addEventListener('load', getLastUpdatedTime);
+  
+    </script>
+
+
+    <p id="totalWordCount"></p>
+
+    <hr>
+    <script>
+      function displayWordCount(sectionId, outputId) {
+
+        const text = document.getElementById(sectionId).textContent;
+
+        const wordCount = wordArray.lenght;
+
+        return wordCount;
+      }
+
+      function displayTotalWordCount() {
+
+        const IntroductionCount = displayWordCount("Introduction_InText");
+        const AnalysisCount = displayWordCount("Analysis_InText");
+
+        const totalWordCount = IntroductionCount + AnalysisCount;
+
+        document.getElementById("totalWordCount").innerText = 'Total word count: ${totalWordCount}';
+      }
+
+      window.addEventListener('load' , displayTotalWordCount);
+    </script>
+          
     </script>
   </body>
 </html>
