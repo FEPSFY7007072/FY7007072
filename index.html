@@ -3,258 +3,257 @@
   <head>
     <title>Conference paper</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 30%;
+      }
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
+    <style>
+      .mySlides {display:none}
+    </style>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
 
   <body style="background-color:#FFFFFF;margin-left:50px;">
     <img src="WebBanner2026.png" alt="Banner" width="1200" height="300">
       <h2>URN 7007072</h2>
     <hr>
+
+    <h2 style="font-family: calibri;"><b>Conference Paper: Bridge Deck repairs</b></h2>
+    <hr>
+
+    <p class="ex1">
+      <table>
+        <tr>
+          <th><h3>Table of contents</h3></th>
+        </tr>
+        <tr>
+          <td><a href="#Abstract">Abstract</a></td>
+        </tr>
+        <tr>
+          <td><a href="#Introduction">Introduction</a></td>
+        </tr>
+        <tr>
+          <td><a href="#References">References</a></td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+
+    <p class="ex1">
+      <h3 id="Abstract">Abstract</h3>
+      <pre>
+        This paper presents a novel adaptive active learning strategy.
+      </pre>
+    </p>
+    <hr>
+
+    <p class="ex1">
+      <h3 id="Introduction">Introduction</h3>
+      <pre>
+        
+      </pre>
+    </p>
+    <hr>
+
+    <h3 id="Analysis_and_discussion">Analysis and discussion</h3>
+      <p>Bridge deck repair durability is the subject of much recent research such as in
+      <a href="https://www.icevirtuallibrary.com/doi/full/10.1680/jbren.21.00034">Toshihiko et al (2023).</a>
+    </p>
+
+    Table 1: Data on cost and lifespan of bridge repairs
+    <table>
+      <tr>
+        <th>£ cost of repairs</th>
+      </tr>
+      <tr>
+        <td>0.7m</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>2.6m</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>17.4m</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>8.8m</td>
+      </tr>
+    </table>
+
+    <p>
+      <math xmlns="https://www.w3.org/1998/Math/MathML">
+        <mrow>
+          <msup><mi>x</mi><mn>2</mn></msup>
+          <mo>+</mo><mi>4</mi><mo>&InvisibleTimes;</mo><mi>x</mi>
+          <mo>=</mo>
+          <mi>0</mi>
+        </mrow>
+      </math>
+    </p>
+
+    <h3 id="References">References</h3>
+    <p>
+      <pre>
+        
+      </pre>
+    </p>
+
+    <button id="colorButton">Click me to change colour</button>
+    <script>
+      (function () {
+        //get a reference to the button element
+        var button = document.getElementById("colorButton");
+
+        //Function to change the button color
+        function changeColor() {
+          // Generate a random color (hexadecimal)
+          var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+
+          //set button background to random color
+          button.style.backgroundColor = randomColor;
+        }
+
+        //add a click event listener to the button
+        button.addEventListener("click", changeColor);
+      })();
+    </script>
+
+    <input type="text" id="textInput" placeholder="Enter text">
+    <button id="alertButton">Show Alert</button>
+
+    <script>
+      (function () {
+        //get reference to the input field and button
+        var input = document.getElementById("textInput");
+        var button = document.getElementById("alertButton");
+
+        //function to show an alert with the input text
+        function showAlert() {
+          var inputText = input.value;
+          alert("You entered: " + inputText);
+        }
+
+        //add a click event listener to the button
+        button.addEventListener("click", showAlert);
+      })();
+    </script>
+
+    <button id="generateButton">Generate Random Number</button>
+    <p id="randomNumber"></p>
+
+    <script>
+      (function () {
+        //get a reference to the button and paragraph
+        var button = document.getElementById("generateButton");
+        var paragraph = document.getElementById("randomNumber");
+
+        //function to generate and display a random number
+        function generateRandomNumber() {
+          var randomNumber = Math.floor(Math.random() * 10) +1;
+          paragraph.textContent = "Random Number: " + randomNumber;
+        }
+
+        //add a click event listener to the button
+        button.addEventListener("click" , generateRandomNumber);
+      })();
+    </script>
+
+    <hr>
+
+    <div id="chart_div"></div>
+    <div id="scatter_div"></div>
+    <div id="bar_div" style="width: 600px; height: 400px;"></div>
+    <div id="line_div" style="width: 1000px; height:600px;"></div>
+    <div id="column_div" style="width: 600px; height: 400px;"></div>
+
+    <script type="text/javascript">
+      google.charts.load('current', {'packages' : ['corechart'] });
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawScatterChart);
+      google.charts.setOnLoadCallback(drawBarChart);
+      // drawLineChart and drawColumnChart are not defined in the original code,
+      // so these two lines are commented out to stop them causing errors
+      // google.charts.setOnLoadCallback(drawLineChart);
+      // google.charts.setOnLoadCallback(drawColumnChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task' , 'Hour per Day'],
+          ['Work' , 8],
+          ['Sleep' , 8],
+          ['Eat' , 2],
+          ['Study' , 4],
+          ['Excercise' , 2],
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart= new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+
+      function drawScatterChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Age');
+        data.addColumn('number' , 'Salary');
+
+        data.addRows([
+          [25, 40000],
+          [30,50000],
+          [35, 60000],
+          [40, 750000],
+          [50, 90000]
+        ]);
+
+        var options = {
+          title: 'Age vs. Salary',
+          hAxis: { title: 'Age' }, 
+          vAxis: {title:'Salary' }
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('scatter_div'));
+        chart.draw(data, options);
+      }
+
+      function drawBarChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'City');
+        data.addColumn('number', 'Population');
+
+        data.addRows([
+          ['London', 9648000],
+          ['Birmingham' , 1153900],
+          ['Edinburgh', 554000]
+        ]);
+
+        var options = {
+          title: 'City Populations (Bar Chart)',
+          hAxis: { title:'Population' },
+          vAxis: {title: 'City' },
+          bars: 'vertical',
+          colors: ['#3366cc'],
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('bar_div'));
+        chart.draw(data, options);
+      }
+    </script>
   </body>
-</html>
-<style>
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 30%;
-  }
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-  </style>
-<style>
-  .mySlides {display:none}
-  </style>
-
-<h2 style="font-family: calibri;"><b>Conference Paper: Bridge Deck repairs</b></h2>
-<hr>
-
-<p class="ex1">
-  <table>
-    <tr>
-      <th><h3>Table of contents</h3></th>
-    </tr>
-    <tr>
-      <td><a href="#Abstract">Abstract</a></td>
-    </tr>
-    <tr>
-      <td><a href="#Introduction">Introduction</a></td>
-    </tr>
-    <tr>
-      <td><a href="#References">References</a></td>
-    </tr>
-  </table>
-</p>
-<hr>
-
-<p class="ex1">
-  <h3 id="Abstract">Abstract</h3>
-  <pre>
-    This paper presents a novel adaptive active learning strategy.
-  </pre>
-</p>
-<hr>
-
-<p class="ex1">
-  <h3 id="Introduction">Introduction</h3>
-  <pre>
-    
-  </pre>
-</p>
-<hr>
-
-<h3 id="Analysis_and_discussion">Analysis and discussion</h3>
-  <p>Bridge deck repair durability is the subject of much recent research such as in
-  <a href="https://www.icevirtuallibrary.com/doi/full/10.1680/jbren.21.00034">Toshihiko et al (2023).</a>
-</p>
-
-Table 1: Data on cost and lifespan of bridge repairs
-<table>
-  <tr>
-    <th>£ cost of repairs</th>
-  </tr>
-  <tr>
-    <td>0.7m</td>
-    <td>2</td>
-</tr>
-  <tr>
-    <td>2.6m</td>
-    <td>5</td>
-  </tr>
-  <tr>
-    <td>17.4m</td>
-    <td>7</td>
-  </tr>
-  <tr>
-    <td>8.8m</td>
-  </tr>
-</table>
-
-<p>
-  <math xmlns="https://www.w3.org/1998/Math/MathML">
-    <mrow>
-      <msup><mi>x</mi><mn>2</mn></mi></msup>
-      <mo>+</mo><mi>4</mi></mo>&InvisibleTimes;</mo><mi>x</mi>
-      <mo>=</mo>
-      <mi>0</mi>
-    </mrow>
-  </math>
-</p>
-
-<h3 id="Refernces">References</h3>h3>
-<p>
-  <pre>
-    
-  </pre>
-</p>
-
-<button id= "colorButton">Click me to change colour</button>button>
-<script>
-  (function () {
-    //get a reference to the button element
-    var button = document.getElementById("colorButton");
-
-    //Function to change the button color
-    function changeColor() {
-      // Generate a random color (hexadecimal)
-      var random = "#" + Math.Floor(Math.random()*16777215).toString(16);
-
-      //set button background to random color
-      button.style.backgroundColor = randomColor;
-    }
-
-    //add a click event listener to the button
-    button.addEventListener("click", changeColor);
-  })();
-</script>
-
-<input type="text" id="textInput" placeholder="Enter text">
-<button id="alertButton">Show Alert</button>button>
-
-<script>
-  (function () {
-    //get reference to the input field and button
-    var input = document.getElementById("textInput");
-    var button = document.getElemenById("alertButton");
-
-    //function to show an alert with the input text
-    function showAlert() {
-      var inputText = input.value;
-      alert("You entered: " + inputText);
-    }
-
-    //add a click event listener to the button
-    button.addEventListener("click", showAlert);
-  })();
-</script>
-
-<button id="generateButton">Generate Random Number</button>
-<p id="randomNumber"></p>
-
-<script>
-  (function () {
-    //get a reference to the button and paragraph
-    var button = document.getElementById("generateButton");
-    var paragraph = document.getElementById("randomNumber");
-
-    //function to generate and display a random number
-    function generate random number() {
-      var randomNumber = Math.floor(Math.random() * 10) +1;
-      paragraph.textContent = "Random Number: " + randomNumber;
-    }
-
-    //add a click event listener to the button
-    button.addEventListener("click" , generateRandomNumber);
-  })();
-</script>
-
-<hr>
-
-<div id="chart_div"></div>
-<div id="scatter_div"></div>
-<div id="bar_div" style="width: 600px; height: 400px;"></div>
-<div id="line_div" style="width: 1000px; height:600px;"></div>
-<div id="column_div" style="width: 600px; height: 400px;"></div>
-
- <script type = "text/javacript">
-   google.charts.load('current', {'packages' : ['corechart'] });
-   google.charts.setOnLoadCallback(drawChart);
-   google.charts.setOnLoadCallback(drawScatterChart);
-   google.charts.setOnLoadCallback(drawBarChart);
-   google.charts.setOnLoadCallBack(drawLineChart);
-   google.charts.setOnLoadCallBack(drawColumnChart);
-
-   function drawChart() {
-   var data = google.visualization.arrayToDataTable([
-   ['Task' , 'Hour per Day'
-   ['Work' , 8],
-   ['Sleep' , 8],
-   ['Eat' , 2],
-   ['Study' , 4],
-   ['Excercise' , 2],
-   ]);
-
-   var options = {
-   title: 'My Daily Activities'
-   };
-
-   var chart= new google.visualization.PieChart(document.getElementById('chart_div'));
-   chart.draw(data, options);
-   }
-
-   function drawScatterChart() {
-   var fata = new google.visualization>DataTable();
-   data.addColumn('number', 'Age');
-   data.addColumn('number' , 'Salary');
-
-   data.addRows([
-   [25, 40000],
-   [30,50000],
-   [35, 60000],
-   [40, 750000],
-   [50, 90000]
-   ]);
-
-   var options = {
-   title: 'Age vs. Salary',
-   hAxis: { title: 'Age' }, 
-   vAxis: {title:'Salary' }
-   };
-
-   var chart = new google.visualization.ScatterChart(document.getElementById('scatter_div'));
-   chart.draw(data, options);
-   }
-
-   function drawBarChart() {
-
-   var data = new google.visualization.DataTable();
-   data.addColumn('string', 'City');
-   data,addColumn('number', 'Population');
-
-   data.addRows([
-   ['London', 9648000],
-   ['Birmingham' , 1153900],
-   ['Edinburgh', 554000]
-   ]);
-
-   var options = {
-   title: 'City Populations (Bar Chart)',
-   hAxis: { title:'Population' },
-   vAxis: {title: 'City' },
-   bars: 'vertical',
-   colors: ['#3366cc'],
-   legend: 'none'
-   };
-
-   var chart = new google.visualization.BarChart(document.getElementById('bar_div'));
-   chart.draw(data, options);
-   }
-
-   
-   
-</body>
 </html>
